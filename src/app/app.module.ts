@@ -7,12 +7,8 @@ import { ContainerComponent } from './template/container/container.component';
 import { TemplateModule } from './template/template.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    TemplateModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, TemplateModule],
   providers: [],
-  bootstrap: [AiroAppComponent]
+  bootstrap: [AiroAppComponent],
 })
-export class AppModule { }
+export class AppModule {}

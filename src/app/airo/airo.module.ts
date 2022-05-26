@@ -8,20 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { UserDataGuard } from './guards/user-data.guard';
 
-
 @NgModule({
-  declarations: [
-    FormComponent,
-    ReadingPageComponent
-  ],
+  declarations: [FormComponent, ReadingPageComponent],
   imports: [
     CommonModule,
     AiroRoutingModule,
     ReactiveFormsModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
   ],
-  providers:[
-    UserDataGuard
-  ]
+  providers: [UserDataGuard],
 })
-export class AiroModule { }
+export class AiroModule {}

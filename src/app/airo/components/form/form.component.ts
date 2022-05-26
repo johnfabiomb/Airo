@@ -1,5 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { User } from '../../interfaces/User';
@@ -16,7 +21,11 @@ import { regex } from '../../utils/regex.const';
 export class FormComponent extends BaseComponent implements OnInit {
   airoSubscriptions: string[] = ['Basic', 'Advanced', 'Pro'];
 
-  constructor(private fb: FormBuilder, public cvsReader: CvsReaderService, public router:Router) {
+  constructor(
+    private fb: FormBuilder,
+    public cvsReader: CvsReaderService,
+    public router: Router
+  ) {
     super();
   }
 
@@ -24,7 +33,7 @@ export class FormComponent extends BaseComponent implements OnInit {
     this.form = this.getForm();
   }
 
-  getForm() : FormGroup {
+  getForm(): FormGroup {
     return this.fb.group({
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
@@ -54,12 +63,12 @@ export class FormComponent extends BaseComponent implements OnInit {
         subscription: formValues.subscription,
         data: this.cvsReader.csvRecords,
       } as User;
-      localStorage.setItem("user", JSON.stringify(user));
-      this.router.navigate(["reading"]);
+      localStorage.setItem('user', JSON.stringify(user));
+      this.router.navigate(['reading']);
     }
   }
 
-  clear(form: FormGroupDirective){
+  clear(form: FormGroupDirective) {
     Swal.fire({
       title: 'Are you sure to discard the changes?',
       showCancelButton: true,
@@ -70,6 +79,6 @@ export class FormComponent extends BaseComponent implements OnInit {
         this.form = this.getForm();
         this.errors = [];
       }
-    })
+    });
   }
 }

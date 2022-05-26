@@ -8,9 +8,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [AiroAppComponent, ContainerComponent, NavbarComponent],
   exports: [AiroAppComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+  imports: [CommonModule, RouterModule],
 })
-export class TemplateModule { }
+export class TemplateModule {}

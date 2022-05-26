@@ -37,19 +37,27 @@ export abstract class BaseComponent implements OnDestroy {
         this.errors.push(`${controlName.split('_').join(' ')} is required`);
       }
       if (errors.minlength) {
-        this.errors.push(`${controlName} minimum length is ${errors.minlength.requiredLength}.`);
+        this.errors.push(
+          `${controlName} minimum length is ${errors.minlength.requiredLength}.`
+        );
       }
-      if(errors.email){
+      if (errors.email) {
         this.errors.push(`${controlName.split('_').join(' ')} is invalid`);
       }
-      if(errors.requiredFileType){
-        this.errors.push(`${controlName.split('_').join(' ')} has unsupported file type`);
+      if (errors.requiredFileType) {
+        this.errors.push(
+          `${controlName.split('_').join(' ')} has unsupported file type`
+        );
       }
-      if(controlName =="password" && errors.pattern){
-        this.errors.push(`${controlName.split('_').join(' ')} must have minimum eight characters, at least one letter, one number and one special character`);
+      if (controlName == 'password' && errors.pattern) {
+        this.errors.push(
+          `${controlName.split('_').join(' ')} must have minimum eight characters, at least one letter, one number and one special character`
+        );
       }
       if (errors.message) {
-        this.errors.push(`${controlName.split('_').join(' ')} ${errors.message}`);
+        this.errors.push(
+          `${controlName.split('_').join(' ')} ${errors.message}`
+        );
       }
     });
   }

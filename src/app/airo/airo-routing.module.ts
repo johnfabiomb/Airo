@@ -7,17 +7,17 @@ import { UserDataGuard } from './guards/user-data.guard';
 const routes: Routes = [
   {
     path: '',
-    component: FormComponent
+    component: FormComponent,
   },
   {
     path: 'reading',
-    canActivate:[UserDataGuard],
-    component: ReadingPageComponent
-  }
+    canActivate: [UserDataGuard],
+    component: ReadingPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AiroRoutingModule { }
+export class AiroRoutingModule {}

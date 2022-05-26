@@ -13,7 +13,6 @@ export class CvsReaderService {
 
   fileChangeListener($event: any): void {
     const files = $event.srcElement.files;
-
     this.ngxCsvParser
       .parse(files[0], { header: this.header, delimiter: ',' })
       .subscribe({
