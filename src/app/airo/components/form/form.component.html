@@ -96,11 +96,13 @@
             </div>
           </div>
         </div>
-        <div class="col-12 d-flex justify-content-between mb-5">
-          <button class="btn btn-danger" (click)="clear(ngForm)">Clear</button>
-          <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="col-12 d-flex justify-content-between mb-3">
+          <button class="btn btn-primary w-100" type="submit">Submit</button>
         </div>
       </form>
+      <div class="col-12 d-flex justify-content-between mb-5">
+        <button [disabled]="!ngForm.touched" class="btn btn-danger w-100" (click)="clear(ngForm)">Clear</button>
+      </div>
     </div>
   </div>
 </div>
