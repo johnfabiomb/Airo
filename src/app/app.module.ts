@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AiroAppComponent } from './template/airo-app/airo-app.component';
+import { ContainerComponent } from './template/container/container.component';
+import { TemplateModule } from './template/template.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TemplateModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AiroAppComponent]
 })
 export class AppModule { }

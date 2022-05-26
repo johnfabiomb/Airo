@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import("./airo/airo.module").then(m=> m.AiroModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

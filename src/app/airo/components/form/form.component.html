@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row  justify-content-center">
+    <div class="col-sm-12 col-lg-6 mt-1">
+      <div *ngFor="let error of errors;" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-5">
+    <div class="col-sm-12 col-lg-6 mt-2">
+      <h3>Form</h3>
+      <form
+        [formGroup]="form"
+        #ngForm="ngForm"
+        class="row g-3 needs-validation"
+        (submit)="submit()"
+        novalidate
+      >
+        <div class="col-md-12">
+          <label class="form-label">First name</label>
+          <div class="input-group has-validation">
+            <input *ngIf="form.get('first_name') as control;" formControlName="first_name"
+              type="text"
+              class="form-control is-invalid"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              required
+            />
+            <div class="invalid-feedback">First name is required.</div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Last name</label>
+          <div class="input-group has-validation">
+            <input *ngIf="form.get('last_name') as control;" formControlName="last_name"
+              type="text"
+              class="form-control is-invalid"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              required
+            />
+            <div class="invalid-feedback">Last name is required.</div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <input *ngIf="form.get('email') as control;" formControlName="email"
+              type="text"
+              class="form-control is-invalid"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              required
+            />
+            <div *ngIf="form.get('password') as control;" class="invalid-feedback">
+              <span *ngIf="control?.errors?.['required']">Email is required.</span>
+              <span *ngIf="control?.errors?.['pattern']">Email is invalid.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Password</label>
+          <div class="input-group has-validation">
+            <input *ngIf="form.get('password') as control;" formControlName="password"
+              type="password"
+              class="form-control is-invalid"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              required
+            />
+            <div *ngIf="form.get('password') as control;" class="invalid-feedback">
+              <span *ngIf="control?.errors?.['required']"> Password is required.</span>
+              <span *ngIf="control?.errors?.['minlength'] || control?.errors?.['pattern']"> Minimum eight characters, at least one letter, one number and one special character</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">Subscriptions</label>
+          <div class="input-group has-validation">
+            <select *ngIf="form.get('subscription') as control;" formControlName="subscription"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              class="form-select" aria-label="Default select example">
+              <option *ngFor="let value of airoSubscriptions;" [value]="value">{{value}}</option>
+            </select>
+            <div class="invalid-feedback">Subscription is required.</div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label">File</label>
+          <div class="input-group has-validation">
+            <input #file *ngIf="form.get('file') as control;" (change)="cvsReader.fileChangeListener($event)" formControlName="file"
+              type="file"
+              class="form-control is-invalid"
+              [ngClass]="{ 'is-invalid': control?.invalid && (control.touched || ngForm.submitted) }"
+              required
+            />
+            <div *ngIf="form.get('file') as control;" class="invalid-feedback">
+              <span *ngIf="control?.errors?.['required']"> File is required.</span>
+              <span *ngIf="control?.errors?.['requiredFileType']"> File must be a CSV file.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 d-flex justify-content-between mb-5">
+          <button class="btn btn-danger" (click)="clear(ngForm)">Clear</button>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
